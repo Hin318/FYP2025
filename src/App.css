@@ -1,0 +1,550 @@
+/* src/App.css (請確保覆蓋掉原本的所有內容) */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Mochiy+Pop+One&display=swap');
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Fredoka', sans-serif;
+  overflow: hidden;
+  /* 確保沒有其他的 margin 或 padding 干擾 */
+  margin: 0; 
+}
+
+/* 首頁專屬容器 */
+.main-menu-screen {
+  height: 100vh;
+  width: 100vw;
+  /* 背景圖設定 */
+  background-image: url('assets/bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 讓標題置中 */
+}
+
+/* 標題樣式 */
+.game-title {
+  font-family: 'Mochiy Pop One', sans-serif; /* 加入這行 */
+  margin-top: 5vh;
+  font-size: 5rem;
+  color: #fff;
+  text-align: center;
+  text-shadow: 4px 4px 0px #5A3E2B; /* 陰影改回咖啡色，比較統一 */
+  letter-spacing: 2px;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* 選單容器 - 關鍵在於這裡的 absolute */
+.menu-container {
+  position: absolute;
+  left: 10%;  /* 靠左 10% */
+  top: 50%;
+  transform: translateY(-20%);
+  
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 250px;
+}
+
+
+/* src/App.css */
+
+/* --- 按鈕區域的容器面板 --- */
+
+
+
+/* 更新後的按鈕樣式 */
+.menu-btn {
+  /* 1. 字體設定 */
+  font-family: 'Mochiy Pop One', sans-serif; /* 換成新字體 */
+  font-size: 1.2rem;
+  letter-spacing: 1px; /* 字距稍微拉開一點比較好看 */
+  
+  /* 2. 顏色設定 (參考你的圖片) */
+  background-color: #FFF8E7; /* 奶油米白色背景 */
+  color: #5A3E2B;            /* 深咖啡色文字 */
+  border: 4px solid #5A3E2B; /* 深咖啡色邊框 */
+  
+  /* 3. 形狀與裝飾 */
+  border-radius: 15px;       /* 圓角 */
+  padding: 15px 0;
+  cursor: pointer;
+  text-align: center;
+  
+  /* 4. 陰影效果 (讓按鈕有立體感) */
+  box-shadow: 0 4px 0px rgba(90, 62, 43, 0.2); /* 微微的咖啡色陰影 */
+  transition: all 0.2s ease;
+  
+  /* 讓英文字母自動變大寫，像圖片那樣 GAME START */
+  text-transform: uppercase; 
+}
+
+/* 滑鼠移上去的效果 */
+.menu-btn:hover {
+  transform: translateY(-3px); /* 微微浮起 */
+  background-color: #FFFFFF;   /* 變更亮 */
+  box-shadow: 0 6px 0px rgba(90, 62, 43, 0.4); /* 陰影變深 */
+  /* 圖片中的文字沒有變色，所以我們保持咖啡色 */
+}
+
+/* 點擊效果 */
+.menu-btn:active {
+  transform: translateY(2px); /* 往下壓 */
+  box-shadow: 0 1px 0px rgba(90, 62, 43, 0.4);
+}
+
+/* ... (原本的 @media 手機版適配保持不變) ... */
+
+/* src/App.css 的最下方追加 */
+
+/* --- 命名畫面樣式 --- */
+
+/* 如果希望命名時背景稍微變暗，可以加上這個疊加層效果 */
+.modal-overlay {
+    background-color: rgba(0, 0, 0, 0.4) !important; /* 覆蓋原本的背景圖，疊加一層半透明黑 */
+    /* 如果你希望保持原本明亮的背景圖，請把上面這行註解掉 */
+    
+    justify-content: center; /* 讓內容物垂直置中 */
+}
+
+/* 中間的白色方塊 */
+.name-entry-box {
+    background-color: #FFF8E7;
+    padding: 40px;
+    border-radius: 30px; /* 圓角 */
+    border: 5px solid #5A3E2B; /* 淡橘色邊框，呼應按鈕 */
+    box-shadow: 0 4px 0px rgba(90, 62, 43, 0.2); /* 微微的咖啡色陰影 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    width: 90%; /* 手機版寬度 */
+    max-width: 500px; /* 電腦版最大寬度 */
+}
+
+/* 標題文字 */
+.name-entry-title {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 700;
+    font-size: 2rem; /* 字稍微調大一點更有氣勢 */
+    margin-bottom: 30px;
+    letter-spacing: 0.05em;
+
+    /* --- 修改重點開始 --- */
+    color: #FFFFFF; /* 字體本體是白色 */
+    
+    /* 使用標準描邊屬性，線條會很圓滑 */
+    -webkit-text-stroke: 5px #5A3E2B; 
+    
+    /* 關鍵魔法：讓描邊畫在文字「後面」，這樣字體不會變細 */
+    paint-order: stroke fill; 
+    
+    /* 移除原本的 text-shadow，確保乾淨 */
+    text-shadow: none; 
+    /* --- 修改重點結束 --- */
+}
+
+/* 輸入欄位 */
+.name-input {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.5rem; /* 字變大一點 */
+    font-family: 'Zen Maru Gothic', sans-serif; /* 新字體 */
+    font-weight: 700; /* 加粗 */
+    border: 3px solid #5A3E2B;
+    border-radius: 15px;
+    outline: none;
+    text-align: center;
+    color: #5A3E2B;
+    margin-bottom: 10px;
+    transition: border-color 0.3s;
+    background-color: #FFF;
+}
+
+/* 輸入框取得焦點時 */
+.name-input:focus {
+    border-color: #845a3e;
+}
+
+/* 確認按鈕 (繼承了 menu-btn 的樣式，這裡微調一下) */
+.submit-btn {
+    margin-top: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+/* src/App.css 追加內容 */
+
+/* --- 遊戲主場景 --- */
+
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* 手機版適配 */
+@media (max-width: 768px) {
+  .game-title {
+      font-size: 3rem;
+  }
+  .menu-container {
+      left: 50%;
+      transform: translate(-50%, 0);
+      bottom: 10%;
+      top: auto;
+  }
+  
+}
+
+/* src/App.css 追加內容 */
+
+/* --- 過場動畫 (Prologue) --- */
+
+/* src/App.css (Prologue 部分更新) */
+
+.prologue-screen {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: black;
+}
+
+/* 1. 背景圖層 */
+.memory-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('./assets/home-bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    
+    /* 預設狀態：模糊且灰階 */
+    filter: blur(10px) grayscale(80%);
+    transform: scale(1.1);
+    opacity: 0; /* 一開始是全黑，看不到背景 */
+}
+
+/* 當加上 start-anim 類別時，才開始跑動畫 */
+.memory-bg.start-anim {
+    opacity: 1; /* 讓背景出現 */
+    animation: bg-clear-up 4s ease-out forwards;
+}
+
+/* 2. 黑色遮罩層 */
+.black-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    z-index: 5;
+}
+
+/* 當加上 start-anim 類別時，才開始跑「視野展開」動畫 */
+.black-overlay.start-anim {
+    animation: reveal-view 4s ease-in-out forwards;
+}
+
+/* 3. 文字層設定 */
+.memory-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    text-align: center;
+    width: 80%; /* 避免文字太長跑版 */
+    transition: opacity 1s ease-in-out; /* 控制淡入淡出的平滑度 */
+}
+
+/* 利用 React 切換 class 來控制淡入淡出 */
+.memory-text.visible {
+    opacity: 1;
+}
+.memory-text.hidden {
+    opacity: 0;
+}
+
+.memory-text p {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    color: white;
+    font-size: 1.8rem;
+    line-height: 1.8;
+}
+
+/* --- Keyframes 維持不變 --- */
+@keyframes bg-clear-up {
+    0% {
+        filter: blur(10px) grayscale(80%);
+        transform: scale(1.1);
+    }
+    100% {
+        filter: blur(0px) grayscale(0%);
+        transform: scale(1);
+    }
+}
+
+@keyframes reveal-view {
+    0% {
+        background: radial-gradient(circle, transparent 0%, black 0%);
+    }
+    30% {
+        background: radial-gradient(circle, transparent 0%, black 30%);
+    }
+    100% {
+        background: radial-gradient(circle, transparent 100%, black 150%);
+        opacity: 0;
+    }
+}
+
+/* 文字顯示 */
+@keyframes text-fade {
+    0% { opacity: 0; }
+    30% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.game-scene-container {
+    width: 100vw;
+    height: 100vh;
+    /* 確保對話框在最下方 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    padding-bottom: 5vh; /* 離底部留一點距離 */
+    align-items: center;
+    cursor: pointer; /* 讓滑鼠變成手指，提示可點擊 */
+
+    background-color: rgb(0, 0, 0); /* 如果圖片載入失敗，至少會看到粉紅色 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 0.5s ease-in-out;
+}
+
+/* 對話框外層包裝 (包含名字和框框) */
+.dialogue-wrapper {
+    width: 90%;
+    max-width: 1000px; /* 電腦版不要太寬 */
+    position: relative;
+    /* 加入一點進場動畫 */
+    animation: slide-up 0.5s ease-out;
+}
+
+/* 1. 名字標籤 */
+.name-tag {
+    background-color: #5A3E2B; /* 深咖啡色底 */
+    color: #FFF;               /* 白字 */
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    padding: 10px 30px;
+    border-radius: 15px 15px 0 0; /* 上方圓角 */
+    display: inline-block;        /* 寬度隨文字變 */
+    margin-left: 20px;            /* 稍微縮進去一點 */
+    transform: translateY(4px);   /* 為了蓋住對話框的邊線，稍微往下移 */
+    z-index: 2;                   /* 確保壓在對話框上面 */
+    border: 3px solid #FFF8E7;    /* 加個淺色邊框更有層次 */
+    border-bottom: none;
+}
+
+/* 2. 對話框本體 */
+.dialogue-box {
+    background-color: rgba(255, 248, 231, 0.95); /* 奶油白，稍微透明 */
+    border: 6px solid #5A3E2B;    /* 深咖啡色厚邊框 */
+    border-radius: 20px;
+    padding: 30px 40px;
+    min-height: 200px;            /* 固定高度，避免文字跳動 */
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* 複用你之前設定的文字樣式，但我微調了顏色 */
+/* 因為背景是淺色的，所以我們把字改回「深色字」，這樣才看得到 */
+.dialogue-text {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: #5A3E2B; /* 改回深咖啡色 */
+    
+    /* 因為背景是淺的，這裡不需要白色描邊了，或者改用淺色描邊 */
+    -webkit-text-stroke: 0px; 
+    text-shadow: none; 
+}
+
+/* 3. 下一句提示游標 (跳動的三角形) */
+.next-indicator {
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+    color: #5A3E2B;
+    font-size: 1.5rem;
+    animation: bounce 1s infinite;
+}
+
+@keyframes slide-up {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
+}
+
+/* src/App.css 追加內容 */
+
+/* --- 選擇題介面 --- */
+
+/* 點擊對話的隱形感應區 */
+.dialogue-clickable-area {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 5vh;
+    z-index: 10;
+}
+
+/* 選擇題遮罩 (全螢幕) */
+.choices-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* 背景稍微變暗，讓玩家專注在選擇上 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20; /* 確保浮在最上面 */
+    animation: fade-in 0.3s ease;
+}
+
+.choices-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+    max-width: 500px;
+}
+
+/* 選項按鈕樣式 */
+.choice-btn {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    padding: 20px;
+    
+    /* 配色：跟主選單類似，但更顯眼一點 */
+    background-color: #FFF;
+    border: 4px solid #FFDAC1; /* 淡橘色邊框 */
+    border-radius: 50px; /* 變成膠囊形狀 */
+    color: #5A3E2B;
+    
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.choice-btn:hover {
+    background-color: #FFDAC1;
+    color: #FFF;
+    transform: scale(1.05);
+    border-color: #FFF;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* src/App.css 追加內容 */
+
+/* --- 數值顯示 HUD --- */
+
+/* src/App.css 追加內容 */
+
+/* --- 角色立繪 (Character Sprites) --- */
+
+/* 1. 角色容器：負責定位 */
+.character-container {
+    position: absolute;
+    bottom: 0;           /* 站在底部 */
+    left: 50%;           /* 水平置中 */
+    transform: translateX(-50%); /* 修正置中偏移 */
+    
+    height: 90vh;        /* 角色高度佔螢幕 80% (可自己調整) */
+    z-index: 1;          /* 層級：比背景(0)高，比對話框(2)低 */
+    
+    /* 漸變設定 */
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: none; /* 讓滑鼠可以穿透角色點到後面的東西 */
+}
+
+/* 2. 控制顯示與隱藏 */
+.character-container.visible {
+    opacity: 1;
+}
+
+.character-container.hidden {
+    opacity: 0;
+}
+
+/* 3. 圖片本體設定 */
+.character-img {
+    height: 100%;        /* 填滿容器高度 */
+    width: auto;         /* 寬度自動，保持比例 */
+    display: block;
+    
+    /* 進場動畫：稍微往上浮現的效果 */
+    animation: fade-in-up 0.6s ease-out;
+}
+
+/* 定義一個「向上浮現」的動畫 */
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* 一開始位置稍微低一點 */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shake-animation {
+  0% { transform: translate(0, 0); }
+  10% { transform: translate(-10px, -10px); }
+  20% { transform: translate(10px, 10px); }
+  30% { transform: translate(-10px, 10px); }
+  40% { transform: translate(10px, -10px); }
+  50% { transform: translate(-5px, 5px); }
+  60% { transform: translate(5px, -5px); }
+  70% { transform: translate(-3px, 3px); }
+  100% { transform: translate(0, 0); }
+}
+
+.effect-shake {
+  animation: shake-animation 0.5s cubic-bezier(.36,.07,.19,.97) both;
+  /* both 代表動畫結束後停在最後的狀態 (回到原點) */
+}
