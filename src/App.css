@@ -1,4 +1,4 @@
-/* src/App.css (請確保覆蓋掉原本的所有內容) */
+
 
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Mochiy+Pop+One&display=swap');
 
@@ -12,40 +12,37 @@
 body {
   font-family: 'Fredoka', sans-serif;
   overflow: hidden;
-  /* 確保沒有其他的 margin 或 padding 干擾 */
+
   margin: 0; 
 }
 
-/* 首頁專屬容器 */
 .main-menu-screen {
   height: 100vh;
   width: 100vw;
-  /* 背景圖設定 */
-  background-image: url('assets/bg.png');
+  
+  background-image: url('assets/MainMenuBG.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
-  align-items: center; /* 讓標題置中 */
+  align-items: center;
 }
 
-/* 標題樣式 */
 .game-title {
-  font-family: 'Mochiy Pop One', sans-serif; /* 加入這行 */
+  font-family: 'Mochiy Pop One', sans-serif; 
   margin-top: 5vh;
   font-size: 5rem;
   color: #fff;
   text-align: center;
-  text-shadow: 4px 4px 0px #5A3E2B; /* 陰影改回咖啡色，比較統一 */
+  text-shadow: 4px 4px 0px #5A3E2B; 
   letter-spacing: 2px;
   animation: float 3s ease-in-out infinite;
 }
 
-/* 選單容器 - 關鍵在於這裡的 absolute */
 .menu-container {
   position: absolute;
-  left: 10%;  /* 靠左 10% */
+  left: 10%;  
   top: 50%;
   transform: translateY(-20%);
   
@@ -55,111 +52,80 @@ body {
   width: 250px;
 }
 
-
-/* src/App.css */
-
-/* --- 按鈕區域的容器面板 --- */
-
-
-
-/* 更新後的按鈕樣式 */
 .menu-btn {
-  /* 1. 字體設定 */
-  font-family: 'Mochiy Pop One', sans-serif; /* 換成新字體 */
-  font-size: 1.2rem;
-  letter-spacing: 1px; /* 字距稍微拉開一點比較好看 */
+  font-family: 'Mochiy Pop One', sans-serif; 
+  font-size: 1.4rem;
+  letter-spacing: 1px; 
   
-  /* 2. 顏色設定 (參考你的圖片) */
-  background-color: #FFF8E7; /* 奶油米白色背景 */
-  color: #5A3E2B;            /* 深咖啡色文字 */
-  border: 4px solid #5A3E2B; /* 深咖啡色邊框 */
-  
-  /* 3. 形狀與裝飾 */
-  border-radius: 15px;       /* 圓角 */
+  background-color: #FFF8E7; 
+  color: #5A3E2B;            
+  border: 4px solid #5A3E2B; 
+
+  border-radius: 15px;      
   padding: 15px 0;
   cursor: pointer;
   text-align: center;
   
-  /* 4. 陰影效果 (讓按鈕有立體感) */
-  box-shadow: 0 4px 0px rgba(90, 62, 43, 0.2); /* 微微的咖啡色陰影 */
+  box-shadow: 0 4px 0px rgba(90, 62, 43, 0.2); 
   transition: all 0.2s ease;
   
-  /* 讓英文字母自動變大寫，像圖片那樣 GAME START */
   text-transform: uppercase; 
 }
 
-/* 滑鼠移上去的效果 */
 .menu-btn:hover {
-  transform: translateY(-3px); /* 微微浮起 */
-  background-color: #FFFFFF;   /* 變更亮 */
-  box-shadow: 0 6px 0px rgba(90, 62, 43, 0.4); /* 陰影變深 */
-  /* 圖片中的文字沒有變色，所以我們保持咖啡色 */
+  transform: translateY(-3px); 
+  background-color: #FFFFFF;   
+  box-shadow: 0 6px 0px rgba(90, 62, 43, 0.4); 
 }
 
-/* 點擊效果 */
 .menu-btn:active {
-  transform: translateY(2px); /* 往下壓 */
+  transform: translateY(2px); 
   box-shadow: 0 1px 0px rgba(90, 62, 43, 0.4);
 }
 
-/* ... (原本的 @media 手機版適配保持不變) ... */
-
-/* src/App.css 的最下方追加 */
-
-/* --- 命名畫面樣式 --- */
-
-/* 如果希望命名時背景稍微變暗，可以加上這個疊加層效果 */
 .modal-overlay {
-    background-color: rgba(0, 0, 0, 0.4) !important; /* 覆蓋原本的背景圖，疊加一層半透明黑 */
-    /* 如果你希望保持原本明亮的背景圖，請把上面這行註解掉 */
+    background-color: rgba(0, 0, 0, 0.4) !important;
     
-    justify-content: center; /* 讓內容物垂直置中 */
+    justify-content: center; 
 }
 
-/* 中間的白色方塊 */
 .name-entry-box {
     background-color: #FFF8E7;
     padding: 40px;
-    border-radius: 30px; /* 圓角 */
-    border: 5px solid #5A3E2B; /* 淡橘色邊框，呼應按鈕 */
-    box-shadow: 0 4px 0px rgba(90, 62, 43, 0.2); /* 微微的咖啡色陰影 */
+    border-radius: 30px; 
+    border: 5px solid #5A3E2B; 
+    box-shadow: 0 4px 0px rgba(90, 62, 43, 0.2); 
     display: flex;
     flex-direction: column;
     align-items: center;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    width: 90%; /* 手機版寬度 */
-    max-width: 500px; /* 電腦版最大寬度 */
+    width: 90%; 
+    max-width: 500px; 
 }
 
-/* 標題文字 */
 .name-entry-title {
     font-family: 'Zen Maru Gothic', sans-serif;
     font-weight: 700;
-    font-size: 2rem; /* 字稍微調大一點更有氣勢 */
+    font-size: 2rem;
     margin-bottom: 30px;
     letter-spacing: 0.05em;
 
-    /* --- 修改重點開始 --- */
-    color: #FFFFFF; /* 字體本體是白色 */
+    color: #FFFFFF; 
     
-    /* 使用標準描邊屬性，線條會很圓滑 */
     -webkit-text-stroke: 5px #5A3E2B; 
     
-    /* 關鍵魔法：讓描邊畫在文字「後面」，這樣字體不會變細 */
     paint-order: stroke fill; 
     
-    /* 移除原本的 text-shadow，確保乾淨 */
     text-shadow: none; 
-    /* --- 修改重點結束 --- */
+
 }
 
-/* 輸入欄位 */
 .name-input {
     width: 100%;
     padding: 15px;
-    font-size: 1.5rem; /* 字變大一點 */
-    font-family: 'Zen Maru Gothic', sans-serif; /* 新字體 */
-    font-weight: 700; /* 加粗 */
+    font-size: 1.5rem; 
+    font-family: 'Zen Maru Gothic', sans-serif; 
+    font-weight: 700; 
     border: 3px solid #5A3E2B;
     border-radius: 15px;
     outline: none;
@@ -170,22 +136,15 @@ body {
     background-color: #FFF;
 }
 
-/* 輸入框取得焦點時 */
 .name-input:focus {
     border-color: #845a3e;
 }
 
-/* 確認按鈕 (繼承了 menu-btn 的樣式，這裡微調一下) */
 .submit-btn {
     margin-top: 20px;
     padding-left: 40px;
     padding-right: 40px;
 }
-
-/* src/App.css 追加內容 */
-
-/* --- 遊戲主場景 --- */
-
 
 @keyframes float {
   0% { transform: translateY(0px); }
@@ -193,7 +152,6 @@ body {
   100% { transform: translateY(0px); }
 }
 
-/* 手機版適配 */
 @media (max-width: 768px) {
   .game-title {
       font-size: 3rem;
@@ -207,12 +165,6 @@ body {
   
 }
 
-/* src/App.css 追加內容 */
-
-/* --- 過場動畫 (Prologue) --- */
-
-/* src/App.css (Prologue 部分更新) */
-
 .prologue-screen {
     position: relative;
     width: 100vw;
@@ -221,7 +173,6 @@ body {
     background-color: black;
 }
 
-/* 1. 背景圖層 */
 .memory-bg {
     position: absolute;
     top: 0;
@@ -232,19 +183,16 @@ body {
     background-size: cover;
     background-position: center;
     
-    /* 預設狀態：模糊且灰階 */
     filter: blur(10px) grayscale(80%);
     transform: scale(1.1);
-    opacity: 0; /* 一開始是全黑，看不到背景 */
+    opacity: 0; 
 }
 
-/* 當加上 start-anim 類別時，才開始跑動畫 */
 .memory-bg.start-anim {
-    opacity: 1; /* 讓背景出現 */
+    opacity: 1; 
     animation: bg-clear-up 4s ease-out forwards;
 }
 
-/* 2. 黑色遮罩層 */
 .black-overlay {
     position: absolute;
     top: 0;
@@ -255,12 +203,10 @@ body {
     z-index: 5;
 }
 
-/* 當加上 start-anim 類別時，才開始跑「視野展開」動畫 */
 .black-overlay.start-anim {
     animation: reveal-view 4s ease-in-out forwards;
 }
 
-/* 3. 文字層設定 */
 .memory-text {
     position: absolute;
     top: 50%;
@@ -268,11 +214,10 @@ body {
     transform: translate(-50%, -50%);
     z-index: 10;
     text-align: center;
-    width: 80%; /* 避免文字太長跑版 */
-    transition: opacity 1s ease-in-out; /* 控制淡入淡出的平滑度 */
+    width: 80%; 
+    transition: opacity 1s ease-in-out; 
 }
 
-/* 利用 React 切換 class 來控制淡入淡出 */
 .memory-text.visible {
     opacity: 1;
 }
@@ -283,11 +228,10 @@ body {
 .memory-text p {
     font-family: 'Zen Maru Gothic', sans-serif;
     color: white;
-    font-size: 1.8rem;
+    font-size: 3rem;
     line-height: 1.8;
 }
 
-/* --- Keyframes 維持不變 --- */
 @keyframes bg-clear-up {
     0% {
         filter: blur(10px) grayscale(80%);
@@ -312,7 +256,6 @@ body {
     }
 }
 
-/* 文字顯示 */
 @keyframes text-fade {
     0% { opacity: 0; }
     30% { opacity: 1; }
@@ -320,83 +263,70 @@ body {
     100% { opacity: 0; }
 }
 
-.game-scene-container {
-    width: 100vw;
-    height: 100vh;
-    /* 確保對話框在最下方 */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; 
-    padding-bottom: 5vh; /* 離底部留一點距離 */
-    align-items: center;
-    cursor: pointer; /* 讓滑鼠變成手指，提示可點擊 */
+/* src/App.css */
 
-    background-color: rgb(0, 0, 0); /* 如果圖片載入失敗，至少會看到粉紅色 */
+/* 1. 遊戲主舞台：必須強制佔滿整個螢幕，不能由內容決定高度 */
+.game-scene-container {
+    position: relative; 
+    width: 100vw;       
+    height: 100vh;      
+    overflow: hidden;   
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    transition: background-image 0.5s ease-in-out;
+    transition: background-image 1s ease-in-out !important; 
+    
+    /* 💥 加入這行！讓遊戲箱子成為所有按鈕大小的「基準點」 */
+    container-type: inline-size; 
 }
 
-/* 對話框外層包裝 (包含名字和框框) */
-.dialogue-wrapper {
-    width: 90%;
-    max-width: 1000px; /* 電腦版不要太寬 */
-    position: relative;
-    /* 加入一點進場動畫 */
-    animation: slide-up 0.5s ease-out;
-}
-
-/* 1. 名字標籤 */
 .name-tag {
-    background-color: #5A3E2B; /* 深咖啡色底 */
-    color: #FFF;               /* 白字 */
+    background-color: #5A3E2B; 
+    color: #FFF;               
     font-family: 'Zen Maru Gothic', sans-serif;
     font-weight: 700;
     font-size: 1.5rem;
     padding: 10px 30px;
-    border-radius: 15px 15px 0 0; /* 上方圓角 */
-    display: inline-block;        /* 寬度隨文字變 */
-    margin-left: 20px;            /* 稍微縮進去一點 */
-    transform: translateY(4px);   /* 為了蓋住對話框的邊線，稍微往下移 */
-    z-index: 2;                   /* 確保壓在對話框上面 */
-    border: 3px solid #FFF8E7;    /* 加個淺色邊框更有層次 */
+    border-radius: 4px 4px 0 0; 
+    display: inline-block;        
+    margin-left: 20px;            
+    transform: translateY(4px);   
+    z-index: 2;                   
+    border: 3px ;    
     border-bottom: none;
 }
 
-/* 2. 對話框本體 */
 .dialogue-box {
-    background-color: rgba(255, 248, 231, 0.95); /* 奶油白，稍微透明 */
-    border: 6px solid #5A3E2B;    /* 深咖啡色厚邊框 */
-    border-radius: 20px;
+    background-color: rgba(255, 236, 199, 0.95); 
+    border: 6px solid #5A3E2B;    
+    border-radius: 4px;
     padding: 30px 40px;
-    min-height: 200px;            /* 固定高度，避免文字跳動 */
+    min-height: 200px;           
     position: relative;
     box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
-/* 複用你之前設定的文字樣式，但我微調了顏色 */
-/* 因為背景是淺色的，所以我們把字改回「深色字」，這樣才看得到 */
 .dialogue-text {
     font-family: 'Zen Maru Gothic', sans-serif;
     font-weight: 700;
     font-size: 1.6rem;
     line-height: 1.6;
-    color: #5A3E2B; /* 改回深咖啡色 */
-    
-    /* 因為背景是淺的，這裡不需要白色描邊了，或者改用淺色描邊 */
+    color: #573503; 
     -webkit-text-stroke: 0px; 
     text-shadow: none; 
+    
+    /* ⬇️ [關鍵新增] 告訴瀏覽器：老實地顯示我打的每一個空白，不准吃掉！ */
+    white-space: pre-wrap; 
 }
 
-/* 3. 下一句提示游標 (跳動的三角形) */
+
 .next-indicator {
     position: absolute;
     bottom: 20px;
     right: 30px;
-    color: #5A3E2B;
+    color: #573503;
     font-size: 1.5rem;
     animation: bounce 1s infinite;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.6); /* 讓箭頭微微發光 */
 }
 
 @keyframes slide-up {
@@ -409,34 +339,47 @@ body {
     50% { transform: translateY(5px); }
 }
 
-/* src/App.css 追加內容 */
 
-/* --- 選擇題介面 --- */
+/* src/App.css */
 
-/* 點擊對話的隱形感應區 */
+/* 1. 對話框的外層容器：讓它絕對貼在螢幕最下方 */
 .dialogue-clickable-area {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    z-index: 40;        /* 確保在最上層 */
+    
+    /* 排版設定 */
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    padding-bottom: 5vh;
-    z-index: 10;
+    justify-content: flex-end; /* 關鍵：把內容物往下推到底 */
+    align-items: center;       /* 水平置中 */
+    
+    padding-bottom: 30px;      /* 離底部留一點點距離 (可自行調整) */
 }
 
-/* 選擇題遮罩 (全螢幕) */
+/* 2. 對話框本體：移除多餘的 margin */
+.dialogue-wrapper {
+    width: 90%;
+    max-width: 1000px;
+    /* 移除所有 margin-bottom，完全交給上面的 padding-bottom 控制 */
+    margin-bottom: 0 !important; 
+    animation: slide-up 0.5s ease-out;
+}
+
 .choices-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); /* 背景稍微變暗，讓玩家專注在選擇上 */
+    background-color: rgba(0, 0, 0, 0.4); 
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 20; /* 確保浮在最上面 */
+    z-index: 20; 
     animation: fade-in 0.3s ease;
 }
 
@@ -448,17 +391,15 @@ body {
     max-width: 500px;
 }
 
-/* 選項按鈕樣式 */
 .choice-btn {
     font-family: 'Zen Maru Gothic', sans-serif;
     font-weight: 700;
     font-size: 1.4rem;
     padding: 20px;
     
-    /* 配色：跟主選單類似，但更顯眼一點 */
     background-color: #FFF;
-    border: 4px solid #FFDAC1; /* 淡橘色邊框 */
-    border-radius: 50px; /* 變成膠囊形狀 */
+    border: 4px solid #5A3E2B; 
+    border-radius: 50px; 
     color: #5A3E2B;
     
     cursor: pointer;
@@ -467,70 +408,80 @@ body {
 }
 
 .choice-btn:hover {
-    background-color: #FFDAC1;
-    color: #FFF;
+    background-color: #a77f65;
+    color: #ffffff;
     transform: scale(1.05);
-    border-color: #FFF;
+    border-color: #ffffff;
 }
 
-@keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
 
-/* src/App.css 追加內容 */
-
-/* --- 數值顯示 HUD --- */
-
-/* src/App.css 追加內容 */
-
-/* --- 角色立繪 (Character Sprites) --- */
-
-/* 1. 角色容器：負責定位 */
-.character-container {
+/* 1. 角色舞台：必須佔滿整個螢幕高度，並對齊底部 */
+.characters-stage {
     position: absolute;
-    bottom: 0;           /* 站在底部 */
-    left: 50%;           /* 水平置中 */
-    transform: translateX(-50%); /* 修正置中偏移 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+    overflow: hidden; /* 避免放大後角色爆出螢幕產生捲軸 */
+}
+
+/* 2. 角色圖片：暴力放大版 */
+.char-img {
+    position: absolute; /* 確保它聽從 bottom 指令 */
+    bottom: -1vh;       /* 讓角色稍微「沉」到螢幕下面一點 (藏住膝蓋以下) */
     
-    height: 90vh;        /* 角色高度佔螢幕 80% (可自己調整) */
-    z-index: 1;          /* 層級：比背景(0)高，比對話框(2)低 */
+    /* 高度設定：如果 95vh 還不夠大，試試 105vh 或 110vh */
+    height: 85%;    
+    width: auto;
+    object-fit: contain;
     
-    /* 漸變設定 */
-    transition: opacity 0.5s ease-in-out;
-    pointer-events: none; /* 讓滑鼠可以穿透角色點到後面的東西 */
-}
-
-/* 2. 控制顯示與隱藏 */
-.character-container.visible {
-    opacity: 1;
-}
-
-.character-container.hidden {
-    opacity: 0;
-}
-
-/* 3. 圖片本體設定 */
-.character-img {
-    height: 100%;        /* 填滿容器高度 */
-    width: auto;         /* 寬度自動，保持比例 */
-    display: block;
+    /* 關鍵優化：如果圖片自帶很多透明邊，用這招切除 */
+    object-position: bottom; 
     
-    /* 進場動畫：稍微往上浮現的效果 */
-    animation: fade-in-up 0.6s ease-out;
+    transition: all 0.3s ease-in-out;
 }
 
-/* 定義一個「向上浮現」的動畫 */
-@keyframes fade-in-up {
-    from {
-        opacity: 0;
-        transform: translateY(20px); /* 一開始位置稍微低一點 */
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* 針對個別位置的微調 (保持不變，但確保 position 是 absolute) */
+.char-left {
+    left: 15%; /* 可以試著改負值 (例如 -5%) 讓角色更靠邊 */
 }
+
+.char-right {
+    right: 15%;
+    transform: scaleX(-1); 
+}
+
+.char-center {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* (選用) 讓沒在講話的角色變暗一點？ */
+.char-dim {
+    filter: brightness(0.6);
+    transform: scale(0.98); /* 稍微縮小 */
+}
+
+
+@keyframes smooth-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.video-smooth-fade {
+  /* 每次元件出現時，執行 0.8 秒的淡入動畫 */
+  animation: smooth-fade-in 0.8s ease-in-out forwards;
+}
+
+.smooth-fade {
+  /* 每次元件出現時，執行 0.8 秒的淡入動畫 */
+  animation: smooth-fade-in 0.3s ease-in-out forwards;
+}
+
+
+
 
 @keyframes shake-animation {
   0% { transform: translate(0, 0); }
@@ -546,5 +497,637 @@ body {
 
 .effect-shake {
   animation: shake-animation 0.5s cubic-bezier(.36,.07,.19,.97) both;
-  /* both 代表動畫結束後停在最後的狀態 (回到原點) */
+ 
+}
+
+@keyframes arrow-float-horizontal {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(15px); } /* 向右移動 15px */
+  100% { transform: translateX(0); }
+}
+
+.interaction-arrow {
+  position: absolute;
+  width: 50px;  /* 箭頭大小，可自行調整 */
+  height: auto;
+  z-index: 70;  /* 確保在所有東西最上面 */
+  pointer-events: none; /* 關鍵：讓滑鼠可以「穿透」箭頭點到下面的門，不會被箭頭擋住 */
+  
+  animation: arrow-float-horizontal 1s ease-in-out infinite; /* 1秒動一次，無限循環 */
+  
+  /* 如果你想讓它發光，可以加這行 */
+  filter: drop-shadow(0 0 5px white); 
+}
+
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 確保影片填滿螢幕，不變形 */
+    z-index: 1;        /* [重要] 比背景圖片(0)高，但比角色(10)低 */
+}
+
+@keyframes bg-fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.transition-fade {
+    animation: bg-fade 1s ease-in-out forwards;
+}
+
+@keyframes video-seamless-slide-right-out {
+    0% {
+        transform: translateX(0);
+         /* 一開始清晰 */
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(100%);
+        filter: blur(0px); /* 結束時恢復清晰 */
+     
+    }
+}
+.video-exit-seamless-slide-right {
+    animation: video-seamless-slide-right-out 0.5s ease-in-out forwards !important;
+}
+
+
+/* --- 2. 定義圖片(下層)向右滑動進場，不淡入 --- */
+@keyframes image-seamless-slide-right-enter {
+    0% { 
+        transform: translateX(-100%); 
+        
+        opacity: 0;
+    }
+
+    100% { 
+        transform: translateX(0);     
+        
+        opacity: 1; 
+    }
+}
+/* 新的名字，方便劇本呼叫 */
+.transition-seamless-slide-right {
+    animation: image-seamless-slide-right-enter 0.5s ease-in-out forwards;
+}
+
+@keyframes bg-drop-down {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+.transition-drop {
+    animation: bg-drop-down 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* 1. 影片(上層)原地慢慢變透明 */
+@keyframes video-cross-dissolve-out {
+    from { 
+        opacity: 1; 
+        transform: translateX(0); 
+        filter: blur(0); 
+    }
+    to { 
+        opacity: 0; 
+        transform: translateX(0); 
+        filter: blur(0); 
+    }
+}
+.video-exit-cross-dissolve {
+    animation: video-cross-dissolve-out 0.3s ease-in-out forwards !important;
+}
+
+/* 2. 圖片(下層)原地慢慢浮現 (作為進場動畫) */
+@keyframes image-cross-dissolve-enter {
+    /* ⬇️ [修復] 這裡必須是 0，不能是 0.5！ */
+    from { opacity: 0; transform: translateX(0); filter: blur(0); }
+    to { opacity: 1; transform: translateX(0); filter: blur(0); }
+}
+
+/* ⬇️ [修復] 名字改為 img-entry 開頭，這樣才能跟劇本對上！ */
+.img-entry-cross-dissolve {
+    animation: image-cross-dissolve-enter 0.8s ease-in-out forwards;
+}
+
+@keyframes image-enter-fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.img-entry-fade {
+    animation: image-enter-fade 0.8s ease-in-out forwards;
+}
+
+.img-entry-instant {
+    animation: none; /* 瞬間出現 */
+    opacity: 1;
+}
+
+/* --- 2. 圖片退場動畫 --- */
+@keyframes image-exit-fade {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.img-exit-fade {
+    animation: image-exit-fade 0.8s ease-in-out forwards;
+}
+
+.img-exit-instant {
+    opacity: 0; /* 瞬間消失 */
+}
+
+/* =========================================
+   特效：甩鏡頭 (Whip Pan)
+   特色：極高速平移 + 模擬動態模糊
+========================================= */
+
+/* --- 甩鏡頭進場 (從右邊瞬間滑入並清晰) --- */
+@keyframes image-entry-whip {
+    0% { 
+        transform: translateX(100%); 
+        filter: blur(15px); /* 剛進來時因為高速移動而模糊 */
+    }
+    100% { 
+        transform: translateX(0); 
+        filter: blur(0px);  /* 煞車定格時變清晰 */
+    }
+}
+
+.img-entry-whip {
+    /* 使用 0.3s 極短時間，加上「先快後慢」的煞車曲線 */
+    animation: image-entry-whip 0.3s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+}
+
+
+/* --- 甩鏡頭退場 (往左邊瞬間飛出並模糊) --- */
+@keyframes image-exit-whip {
+    0% { 
+        transform: translateX(0); 
+        filter: blur(0px); 
+    }
+    100% { 
+        transform: translateX(-100%); 
+        filter: blur(15px); /* 飛出去時產生動態模糊 */
+    }
+}
+
+.img-exit-whip {
+    /* 使用 0.3s 極短時間，加上「先慢後極快」的加速曲線 */
+    animation: image-exit-whip 0.3s cubic-bezier(0.8, 0, 0.9, 0.1) forwards;
+}
+
+/* =========================================
+   特效：圓圈聲波提示 (Ripple Indicator)
+========================================= */
+/* 中心亮點 */
+.ripple-indicator {
+    position: absolute;
+    width: 30px;       /* 中心點的大小 */
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.9); /* 白色半透明 */
+    border-radius: 50%;
+    z-index: 70;
+    
+    /* 🛑 核心防呆：讓滑鼠「穿透」這個特效，才不會擋住底下隱形門的點擊判定！ */
+    pointer-events: none; 
+    
+    /* 讓它有輕微的呼吸感 */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    animation: dot-explode 2s infinite ease-out;
+    
+}
+
+/* 向外擴散的波紋 (利用 ::before 和 ::after 做出兩圈) */
+.ripple-indicator::before,
+.ripple-indicator::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: 10px solid rgba(255, 255, 255, 0.8); /* 波紋的顏色與粗細 */
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    
+    /* 執行 2 秒的擴散動畫，無限循環 */
+    animation: ripple-wave 2s infinite cubic-bezier(0.1, 0.8, 0.3, 1);
+}
+
+/* 第二圈波紋稍微延遲出發，製造「連續聲波」的層次感 */
+.ripple-indicator::after {
+    animation-delay: 1s; 
+}
+
+/* 擴散動畫的劇本 */
+@keyframes ripple-wave {
+    0% {
+        width: 100%;
+        height: 100%;
+        opacity: 1; /* 一開始清晰 */
+    }
+    100% {
+        width: 400%; /* 擴散到 4 倍大 */
+        height: 400%;
+        opacity: 0;  /* 到最外面時完全透明消失 */
+    }
+}
+
+@keyframes dot-explode {
+    0% {
+        /* 1. 誕生：從無到有 */
+        width: 0px;
+        height: 0px;
+        background-color: rgba(255, 255, 255, 1);
+        border: 0px solid rgba(255, 255, 255, 1);
+        opacity: 0;
+    }
+    15% {
+        /* 2. 成型：聚集成一顆實心發光的白點 */
+        width: 24px;
+        height: 24px;
+        background-color: rgba(255, 255, 255, 1);
+        border: 0px solid rgba(255, 255, 255, 1);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+        opacity: 1;
+    }
+    25% {
+        /* 短暫停留 0.2 秒，讓玩家看清楚這是一顆實心點 */
+        width: 24px;
+        height: 24px;
+        background-color: rgba(255, 255, 255, 1);
+        border: 0px solid rgba(255, 255, 255, 1);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+        opacity: 1;
+    }
+    40% {
+        /* 3. 掏空與擴張：中心白點變透明，外圍長出白框，開始變成「圈」 */
+        background-color: rgba(255, 255, 255, 0);
+        border: 6px solid rgba(255, 255, 255, 0.8);
+        box-shadow: 0 0 0px rgba(255, 255, 255, 0);
+    }
+    100% {
+        /* 4. 消散：擴大成巨大的圈圈，邊框變細，並完全透明消失 */
+        width: 120px;
+        height: 120px;
+        background-color: rgba(255, 255, 255, 0);
+        border: 1px solid rgba(255, 255, 255, 0);
+        opacity: 0;
+    }
+}
+
+/* =========================================
+   特效：章節結束電影感黑幕 (Chapter End Cinematic)
+========================================= */
+.chapter-end-overlay {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* 極深的半透明黑底，蓋住背景 */
+    z-index: 100; /* 確保它在最上層，蓋住所有角色和 UI */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10%;
+}
+
+/* 上方的漸變大標題 */
+.chapter-end-title {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 900;
+    font-size: 4rem;
+    color: #FFFFFF;
+    letter-spacing: 0.3em;
+    margin-bottom: 60px;
+    
+    /* 3秒緩慢浮現 + 輕微上浮的電影感動畫 */
+    opacity: 0;
+    animation: cinematic-fade-in 3s ease-in-out forwards;
+}
+
+/* 下方的打字機內文 */
+/* 結局下方的文字設定 */
+.chapter-end-text {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    
+    /* 💥 1. 將字體明顯放大 (從 1.8rem 改為 2.8rem，可依喜好微調) */
+    font-size: 2.4rem; 
+    font-weight: 700;
+    
+    /* 💥 2. 讓字體顏色稍微亮一點，變成純白 */
+    color: #FFFFFF;       
+    
+    line-height: 1.5;      
+    white-space: pre-wrap; 
+    text-align: center;
+    min-height: 0;         
+    margin-top: 10px;      
+    margin-bottom: 20px;   
+    
+    /* 💥 3. 加上這行：套用無限循環的呼吸閃爍動畫 */
+}
+
+
+/* 💥 4. 在這個區塊的正下方，貼上這個全新的動畫腳本 */
+@keyframes text-pulse-glow {
+    0% { 
+        opacity: 1; /* 變暗 */
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.1); 
+    }
+    100% { 
+        opacity: 1;   /* 變亮 */
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.9); /* 加上發光效果更吸睛 */
+    }
+}
+/* 電影感浮現動畫腳本 */
+@keyframes cinematic-fade-in {
+    0% { 
+        opacity: 0; 
+        transform: translateY(20px); 
+        filter: blur(5px); /* 剛出現時微微模糊 */
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+        filter: blur(0px); 
+    }
+}
+
+/* 右下角點擊提示 (等待打字結束後浮現) */
+.click-to-continue-hint {
+    position: absolute;
+    bottom: 50px;
+    right: 60px;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    
+    /* 💥 1. 稍微放大字體 (原本是 1.2rem) */
+    font-size: 1.8rem; 
+    
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 0.2em;
+    
+    /* 💥 2. 換成 1秒循環一次的斷電閃爍 (sharp-blink) */
+    animation: text-pulse-glow 0.5s infinite alternate ease-in-out;
+}
+
+@keyframes hint-fade-in {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes sharp-blink {
+    0%, 49% { opacity: 1; }  /* 前半秒保持完全看見 */
+    50%, 99% { opacity: 0; } /* 剛好到一半時，瞬間變透明 (消失) */
+    100% { opacity: 1; }     /* 結束時瞬間亮回來，準備下一次循環 */
+}
+
+/* =========================================
+   系統：劇情回顧檔案庫 (Archive Story Tree)
+========================================= */
+.archive-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    /* 這裡你可以換成你喜歡的星空背景圖，確保是 1920x1080 比例 */
+    background: radial-gradient(circle at center, #1E2336 0%, #0B0D17 100%);
+    z-index: 200;
+    overflow-y: auto; /* 允許上下滾動 */
+    overflow-x: hidden;
+    padding: 50px 0;
+    color: #FFF;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.archive-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    margin-bottom: 40px;
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+.archive-close-btn {
+    position: fixed;
+    top: 30px; right: 40px;
+    background: none; border: 2px solid #FFF; border-radius: 50px;
+    color: #FFF; font-size: 1.2rem; padding: 10px 30px;
+    cursor: pointer; z-index: 210; transition: 0.3s;
+}
+.archive-close-btn:hover { background: #FFF; color: #0B0D17; }
+
+/* --- 樹狀圖排版核心 --- */
+.tree-container {
+    display: flex; flex-direction: column; align-items: center;
+    width: 100%; max-width: 1200px;
+}
+
+/* 垂直線 */
+.line-v {
+    width: 2px; height: 40px;
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+/* 分支容器 (橫向切分) */
+.branch-container {
+    display: flex; flex-direction: row; justify-content: center;
+    position: relative; width: 100%; margin-top: 20px;
+}
+/* 畫分支上方的橫線 */
+.branch-container::before {
+    content: ''; position: absolute; top: -20px;
+    width: 50%; /* 根據分支數量微調，2個分支通常是 50% */
+    height: 2px; background-color: rgba(255, 255, 255, 0.4);
+}
+/* 分支的直柱 */
+.branch-column {
+    display: flex; flex-direction: column; align-items: center;
+    width: 50%; /* 一半一半 */
+    position: relative;
+}
+/* 分支直柱上方的連接線 */
+.branch-column::before {
+    content: ''; position: absolute; top: -20px;
+    width: 2px; height: 20px; background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* --- 節點外觀設計 --- */
+/* 一般劇情節點 */
+.node-story {
+    background: rgba(43, 53, 90, 0.8);
+    border-left: 6px solid #8CA4FF; /* 參考圖的左側藍色重點條 */
+    border-radius: 4px;
+    padding: 15px 20px;
+    width: 280px;
+    display: flex; flex-direction: column;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.node-story h3 { font-size: 1.2rem; margin-bottom: 10px; color: #E2E8FF; }
+/* 🌟 替換成完美比例版： */
+.node-story img { 
+    width: 100%; 
+    height: auto;        /* 關鍵1：讓高度根據圖片原本的比例自動長高 */
+    border-radius: 4px; 
+    opacity: 0.8; 
+    display: block;      /* 關鍵2：消除圖片下方可能產生的多餘空白縫隙 */
+}
+/* 選項節點 (菱形圖標感) */
+.node-choice {
+    background: rgba(20, 25, 45, 0.9);
+    border: 1px solid #6A7FD2;
+    padding: 10px 30px;
+    border-radius: 30px;
+    color: #A3B5FF;
+    font-size: 1rem;
+    position: relative;
+    box-shadow: 0 0 15px rgba(106, 127, 210, 0.2);
+}
+
+/* 結局節點 (圓形) */
+.node-ending {
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(58,82,156,0.9) 0%, rgba(20,30,60,0.9) 100%);
+    border: 2px solid #8CA4FF;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    box-shadow: 0 0 30px rgba(140, 164, 255, 0.3);
+    text-align: center;
+}
+.node-ending .tag { font-size: 0.8rem; color: #A3B5FF; margin-bottom: 5px;}
+.node-ending h3 { font-size: 1.3rem; font-weight: bold; color: #FFF; text-shadow: 0 2px 4px rgba(0,0,0,0.8);}
+
+/* --- 未解鎖的未知節點 (?) --- */
+.node-locked {
+    background: rgba(30, 35, 50, 0.4);   /* 比較暗的半透明背景 */
+    border: 2px dashed #4A5A90;          /* 虛線邊框，呈現「待解鎖」的感覺 */
+    border-radius: 4px;
+    width: 280px;                        /* 寬度與正常的 node-story 相同 */
+    height: 120px;                       /* 給予一個固定的高度 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5); /* 內陰影讓它看起來凹下去 */
+}
+
+.node-locked span {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #4A5A90;                      /* 黯淡的藍色問號 */
+}
+
+.locked-image-placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* 🌟 完美魔法：自動模擬一般遊戲背景圖的寬高比例 */
+    background-color: #050508; /* 極深的純黑底色 */
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* 裡面的大問號樣式 */
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #3A4A70; /* 黯淡的神祕藍色 */
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.8); /* 內陰影讓它有深邃感 */
+}
+
+/* --- 讓節點具有可點擊的互動感 --- */
+.node-story.clickable {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.node-story.clickable:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(140, 164, 255, 0.4);
+    border-color: #A3B5FF;
+}
+
+/* =========================================
+   系統按鈕區 (存檔、主畫面、上一段)
+========================================= */
+
+/* =========================================
+   系統按鈕區 (等比例縮放 + 網格變形)
+========================================= */
+
+/* =========================================
+   系統按鈕區 (CQW 完美容器比例 + 硬核全螢幕偵測)
+========================================= */
+
+/* 1. 預設網頁版：Grid 上下兩層排版 */
+.system-btn-group {
+    position: absolute;
+    bottom: 1.5cqw;   
+    right: 1.5cqw;    
+    z-index: 50;
+    display: grid;
+    gap: 0.6cqw;    
+    
+    grid-template-areas:
+        ". save"
+        "home prev";
+}
+
+/* 💥 2. 終極全螢幕偵測 (精準攔截 F11 與 系統全螢幕) */
+@media (display-mode: fullscreen) {
+    .system-btn-group {
+        grid-template-areas: "save home prev";
+    }
+}
+:fullscreen .system-btn-group,
+:-webkit-full-screen .system-btn-group {
+    grid-template-areas: "save home prev";
+}
+
+/* 3. 綁定按鈕到對應的網格位置 */
+.btn-save { grid-area: save; background-color: rgba(255, 236, 199, 1); color: #5A3E2B; }
+.btn-home { grid-area: home; background-color: rgba(255, 236, 199, 1); color: #5A3E2B; }
+.btn-prev { grid-area: prev; background-color: rgba(255, 236, 199, 1); color: #5A3E2B; }
+
+/* 💥 4. 按鈕的「絕對不變形」大小設定 (完美黃金比例) */
+.sys-btn {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    
+    /* 💥 稍微放大：介於上一版的「太大」與剛剛的「太小」之間 */
+    padding: 0.45cqw 1cqw;  /* 上下 0.5，左右 1.2 */
+    font-size: 0.9cqw;      /* 字體設定在 0.95 */
+    border: 0.15cqw solid #5A3E2B; 
+    border-radius: 0.5cqw;   
+    
+    transition: all 0.2s ease;
+}
+
+.btn-save .sys-btn-icon {
+    margin-right: 0.15em;
+
+    transform: translateY(3.5px); 
+}
+
+.btn-home .sys-btn-icon {
+
+    /* 因為原圖尺寸不同，需要的下沉量可能不一樣 */
+    transform: translateY(4.5px); 
+}
+
+.btn-prev:disabled {
+    background-color: #E0E0E0;
+    color: #888;
+    cursor: not-allowed;
+    opacity: 0.7;
+    border-color: #888;
 }

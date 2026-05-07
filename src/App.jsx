@@ -1,33 +1,33 @@
-// src/App.jsx
+
 import { useState } from 'react'
 import './App.css'
 import MainMenu from './components/MainMenu'
-import NameEntry from './components/NameEntry'
 import Prologue from './components/Prologue'
 import GameScene from './components/GameScene'
-import StatsDisplay from './components/StatsDisplay' // 1. 引入新組件
+import StatsDisplay from './components/StatsDisplay'
+import ArchiveMenu from './components/ArchiveMenu' // 🌟 新增這行：引入世界樹組件
 import { loadGame } from './utils/saveSystem';
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState('menu');
   const [childName, setChildName] = useState('');
 
-  // 2. 定義初始數值 (State)
+  
   const [stats, setStats] = useState({
-    sanity: 100,      // 理智 (滿分100)   
-    relationship: 50, // 親密 (初始50)
-    development: 0    // 成長 (初始0)
+    sanity: 0,         
+    relationship: 0, 
+    development: 0    
  });
 
   const [loadedScene, setLoadedScene] = useState(null);
 
-  // 3. 定義更新數值的函式 (讓 GameScene 呼叫)
+ 
   const handleUpdateStats = (changes) => {
     setStats(prevStats => {
-        // 複製原本的數值，然後加上變動值
+       
         const newStats = { ...prevStats };
         
-        // 迴圈處理每個變動 (例如: { sanity: -10, money: -50 })
+       
         for (const [key, value] of Object.entries(changes)) {
             if (newStats[key] !== undefined) {
                 newStats[key] += value;
@@ -39,13 +39,13 @@ function App() {
 const handleLoadGame = () => {
     const saveData = loadGame();
     if (saveData) {
-        // 1. 還原數值
+        
         setStats(saveData.stats);
-        // 2. 還原名字
+       
         setChildName(saveData.childName);
-        // 3. 設定要跳轉的場景
+        
         setLoadedScene(saveData.sceneId);
-        // 4. 切換畫面到遊戲中
+        
         setCurrentScreen('gameplay');
     } else {
         alert("找不到存檔紀錄！");
@@ -53,41 +53,67 @@ const handleLoadGame = () => {
   };
   
 const handleStartClick = () => {
-    setLoadedScene(null); // 確保是新遊戲
-    setCurrentScreen('naming'); 
+    setLoadedScene(null); 
+    setJumpLineIndex(0);           // 🌟 重新開始要歸零
+    setCurrentScreen('prologue'); 
   };
 
-  const handleNameConfirmed = (nameInput) => {
-    setChildName(nameInput);
-    setCurrentScreen('prologue'); 
-  }
+const [jumpLineIndex, setJumpLineIndex] = useState(0);
+
+// 💥 加上第三個參數：snapshotStats
+  const handleJumpToScene = (sceneId, lineIdx = 0, snapshotStats) => {
+      setLoadedScene(sceneId);
+      setJumpLineIndex(lineIdx);     // 🌟 記錄要跳到哪一行
+      setCurrentScreen('gameplay');
+      
+      // 💥 真正的「時光倒流 (回車)」魔法在這裡！
+      // 如果 Archive 有傳遞歷史分數過來，就強制用它覆蓋現在的分數
+      if (snapshotStats) {
+          setStats(snapshotStats); 
+          // ⚠️ 注意：如果你的分數狀態設定函數不叫 setStats（例如叫 setGameStats 或 updateStats），請記得把這裡換成你實際的名字！
+      }
+  };
+
+
   
   const handlePrologueFinish = () => setCurrentScreen('gameplay');
 
-  return (
+return (
     <div className="App">
-      {currentScreen === 'menu' && <MainMenu 
-            onStartGame={handleStartClick} onLoadGame={handleLoadGame}/>}
-      {currentScreen === 'naming' && <NameEntry onConfirm={handleNameConfirmed} />}
+      {currentScreen === 'menu' && (
+          <MainMenu 
+              onStartGame={handleStartClick} 
+              onLoadGame={handleLoadGame}
+              onJumpToScene={handleJumpToScene} 
+          />
+      )}
+
+      {/* 🌟 1. 註冊 Archive 畫面：當 currentScreen 是 'archive' 時顯示世界樹 */}
+      {currentScreen === 'archive' && (
+          <ArchiveMenu 
+              onClose={() => setCurrentScreen('menu')} // 點擊返回時回主畫面
+              onJumpToScene={handleJumpToScene}        // 支援從世界樹跳轉
+          />
+      )}
+
       {currentScreen === 'prologue' && <Prologue onAnimationEnd={handlePrologueFinish} />}
 
-{currentScreen === 'gameplay' && (
-  <div className="game-container" style={{/*...*/}}>
-    <StatsDisplay stats={stats} />
-    
-    <GameScene 
-        // [新增] 加入 key 屬性
-        // 技巧：當 loadedScene 有值(讀檔)就用讀檔ID，沒值(新遊戲)就用 'new-game'
-        // 這樣每次切換，React 都會知道這是「新的一局」，會徹底重置所有狀態！
-        key={loadedScene || 'new-game'} 
-
-        childName={childName} 
-        stats={stats} 
-        onUpdateStats={handleUpdateStats} 
-        initialScene={loadedScene} 
-    />
-  </div>
-)}
+      {currentScreen === 'gameplay' && (
+        <div className="game-container" style={{/*...*/}}>
+          <StatsDisplay stats={stats} />
+          
+          <GameScene 
+              key={`${loadedScene || 'new-game'}-${jumpLineIndex}`} 
+              childName={childName} 
+              stats={stats} 
+              onUpdateStats={handleUpdateStats} 
+              initialScene={loadedScene} 
+              initialLineIndex={jumpLineIndex} 
+              // 🌟 2. 接上熱線：當遊戲結束時，請大老闆把畫面切換到 'archive'
+              onExit={() => setCurrentScreen('archive')} 
+          />
+        </div>
+      )}
     </div>
   )
 }

@@ -1,31 +1,92 @@
-// src/components/MainMenu.jsx
+import React, { useState, useEffect, useRef } from 'react';
+import ArchiveMenu from './ArchiveMenu'; // 確保路徑正確
 
-import React from 'react';
-// 我們不需要在這裡寫 CSS，因為我們會把它放在 App.css 裡統一管理，或者你可以建立 MainMenu.css
 
-const MainMenu = ({ onStartGame, onLoadGame }) => {
+
+const MainMenu = ({ onStartGame, onLoadGame, onJumpToScene}) => {
+  const [showArchive, setShowArchive] = useState(false);
+  const bgmRef = useRef(null);
+
+  useEffect(() => {
+    // 1. 初始化 BGM
+    // 請確認檔案路徑是否正確 (public/audio/bgm/SweetieGirl.mp3)
+    const audio = new Audio('/audio/bgm/SweetieGirl.mp3'); 
+    
+    
+    audio.loop = true;   
+    audio.volume = 0.5;  
+
+    bgmRef.current = audio;
+    
+
+
+    
+
+    // 2. 定義一個「嘗試播放」的函式
+    const attemptPlay = () => {
+      if (!audio) return;
+
+      const playPromise = audio.play();
+
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            // 🎉 成功播放！
+            // 既然已經在播了，就不用再監聽玩家點擊了，移除監聽器以節省資源
+            document.removeEventListener('click', attemptPlay);
+            document.removeEventListener('keydown', attemptPlay);
+          })
+          .catch(error => {
+            // 把 error 放進 console.log 裡面使用它
+            console.log("自動播放被阻擋，等待玩家互動後播放...", error); 
+        });
+      }
+    };
+
+    // 3. 一進來先試一次 (運氣好會直接播)
+    attemptPlay();
+
+    // 4. [關鍵] 掛上監聽器：只要玩家點擊網頁任意處，就執行 attemptPlay
+    document.addEventListener('click', attemptPlay);
+    document.addEventListener('keydown', attemptPlay); // 按鍵盤也可以
+
+    // 5. 離開時的清理
+    return () => {
+      if (bgmRef.current) {
+        bgmRef.current.pause();
+        bgmRef.current.currentTime = 0;
+      }
+      // 記得一定要移除監聽器！
+      document.removeEventListener('click', attemptPlay);
+      document.removeEventListener('keydown', attemptPlay);
+    };
+  }, []);
+
 
   return (
     <div className="main-menu-screen">
-      {/* 標題 */}
       <h1 className="game-title">Life Choices</h1>
-
-      {/* 左側選單 */}
-    <div className="menu-buttonsbg">
       <div className="menu-container">
-        {/* 注意：這裡我們把 onclick 換成了 onClick (C要大寫)
-            onStartGame 是一個「道具(prop)」，讓父層告訴這個按鈕按下後要幹嘛
-        */}
-        <button className="menu-btn" onClick={onStartGame}>Game Start</button>
-        
-{/* [修改] 直接把按鈕顯示出來，不用大括號 {} 包住判斷條件了 */}
-        <button className="menu-btn" onClick={onLoadGame}>Data Load</button>
-        <button className="menu-btn">Archive</button>
-        <button className="menu-btn">Language</button>
+        <button className="menu-btn" onClick={onStartGame}>開始遊戲</button>
+        <button className="menu-btn" onClick={onLoadGame}>你的存檔</button>
+        <button className="menu-btn" onClick={() => setShowArchive(true)}>
+    世界樹
+</button>
+        <button className="menu-btn">設定</button>
       </div>
+      {/* 🌟 把 onJumpToScene 傳遞給劇情回顧 */}
+      {showArchive && (
+          <ArchiveMenu 
+              onClose={() => setShowArchive(false)} 
+              onJumpToScene={onJumpToScene} 
+          />
+      )}
     </div>
-  </div>
+    
   );
+  
+  
 };
+
 
 export default MainMenu;

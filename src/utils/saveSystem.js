@@ -1,8 +1,6 @@
-// src/utils/saveSystem.js
 
-const SAVE_KEY = 'my_galgame_save_data'; // 存檔在瀏覽器裡的鑰匙名稱
+const SAVE_KEY = 'my_galgame_save_data'; 
 
-// 存檔功能
 export const saveGame = (data) => {
   try {
     const jsonString = JSON.stringify(data);
@@ -15,11 +13,10 @@ export const saveGame = (data) => {
   }
 };
 
-// 讀檔功能
 export const loadGame = () => {
   try {
     const jsonString = localStorage.getItem(SAVE_KEY);
-    if (!jsonString) return null; // 如果沒有存檔
+    if (!jsonString) return null; 
     return JSON.parse(jsonString);
   } catch (error) {
     console.error("讀檔失敗:", error);
@@ -27,7 +24,6 @@ export const loadGame = () => {
   }
 };
 
-// 檢查是否有存檔 (用來決定主選單要不要顯示「繼續遊戲」)
 export const hasSaveFile = () => {
   return localStorage.getItem(SAVE_KEY) !== null;
 };
