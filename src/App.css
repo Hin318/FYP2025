@@ -17,9 +17,11 @@ body {
 }
 
 .main-menu-screen {
-  height: 100vh;
-  width: 100vw;
+  /* 💥 關鍵魔法：把 100vh 改成 100dvh 
+     這樣一來，就算手機的網址列縮放，首頁背景也絕對不會跟著跳動！ */
+  height: 100dvh; 
   
+  width: 100vw;
   background-image: url('assets/MainMenuBG.png');
   background-size: cover;
   background-position: center;
@@ -31,7 +33,10 @@ body {
 
 .game-title {
   font-family: 'Mochiy Pop One', sans-serif; 
-  margin-top: 5vh;
+  
+  /* 💥 這裡的 margin-top 也把 vh 改成 dvh */
+  margin-top: 5dvh; 
+  
   font-size: 5rem;
   color: #fff;
   text-align: center;
